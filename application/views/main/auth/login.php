@@ -9,13 +9,14 @@
                     } ?>
                 </div>
                 <div class="row card-body py-5">
-                    <div class="col-lg-6 d-flex align-items-center justify-content-center">
-                        <span class="pb-5"><i class="fa fa-users" style="font-size: 100px;"></i></span>
+                    <div class="col-lg-6 mb-2 image-login d-flex align-items-center justify-content-center">
+                        <img src=<?php echo base_url('assets/image/pnj.png') ?>>
+                        <!-- <span class="pb-5"><i class="fa fa-users" style="font-size: 100px;"></i></span> -->
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 pt-1">
                         <form method="POST" action="<?php echo site_url("auth") ?>">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Username" name="username" type="text">
+                                <input class="form-control" placeholder="Username/NIP" name="username" type="text">
                                 <?php echo form_error('username'); ?>
                             </div>
                             <div class="form-group">

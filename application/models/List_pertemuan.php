@@ -5,7 +5,7 @@ class List_pertemuan extends CI_Model
     {
         $this->db->select('md.id_mkdosen, md.id_kelas, md.kode_matkul, md.nip_dosen, d.nama, k.nama_kelas, k.semester, mk.namamk');
         $this->db->from('mk_dosen as md');
-        $this->db->join('dosen as d', 'd.nip=md.nip_dosen');
+        $this->db->join('users as d', 'd.nip=md.nip_dosen');
         $this->db->join('kelas as k', 'k.id_kelas=md.id_kelas');
         $this->db->join('matakuliah as mk', 'mk.kodemk=md.kode_matkul');
         $this->db->where('md.id_mkdosen', $id_mkdosen);
@@ -68,6 +68,28 @@ class List_pertemuan extends CI_Model
         } else {
             return $query->result();
         }
+    }
+
+    public function update_data() {
+        $id = $this->input->post('id-bap');
+        $topik = $this->input->post('topik-utama');
+        $cp = $this->input->post('cp-edit');
+        $deskripsi = $this->input->post('deskripsi');
+       
+        $tanggal = $this->input->post('tanggal');
+        $status = $this->input->post('status-perkuliahan');
+        $pertemuan = $this->input->post('pertemuan-edit');
+        // var_dump($tanggal);exit;
+        $this->db->set('topik', $topik);
+        $this->db->set('cp_pertemuan',$cp);
+        $this->db->set('deskripsi', $deskripsi);
+        $this->db->set('pertemuan', $pertemuan);
+        $this->db->set('tanggal', $tanggal);
+        $this->db->set('status', $status);
+        $this->db->where('id_bap', $id);
+        $query = $this->db->update('bap');
+
+        return $query;
     }
 
 }

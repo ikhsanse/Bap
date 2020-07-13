@@ -2,55 +2,142 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header justify-content-center navigation text-white pb-0">
-                <h5 class="modal-title mb-3" id="modalInput">Pertemuan Ke-2</h5>
+                <h5 class="modal-title mb-3" id="modalInput"><?php echo $matkul . ' - ' . $kelas ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="text-white">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <h6>Kapita Selekta - TI 8A</h6>
-                <form>
-                    <?php echo $id_bap?>
+                <form method="post" action="<?php echo site_url('pertemuan/update') ?>" id="editForm">
+
+                    <input hidden id="id-bap" name="id-bap">
                     <div class="form-group">
-                        <select class="form-control">
-                            <option>MongoDB</option>
-                            <option>Topik Utama</option>
+                        <label for="headerPertemuan">Pertemuan Ke-</label>
+                        <input class="form-control" name="pertemuan-edit"  id="headerPertemuan" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="2">
+                    </div>
+                    <div class="form-group">
+                        <label for="tpk">Topik Utama</label>
+                        <select id="tpk" name="topik-utama" class="form-control">
+                            <option id="topik"></option>
+                            <?php
+                            foreach ($topik as $tpk) {
+                                echo '<option value="' . $tpk->tpk_utama . '">' . $tpk->tpk_utama . '</option>';
+                            }
+                            ?>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" value="" placeholder="Capaian Pertemuan">
+                    <div class="form-group" id="cp-p">
+                        <label for="cp-edit">Capaian Pertemuan</label>
+                        <select readonly id="cp-edit" class="form-control" name="cp-edit">
+                            <option id="cp">Capaian Pertemuan</option>
+                        </select>
+                        <!-- <input id="cp-pertemuan" class="form-control" name="cp-pertemuan" placeholder="Capaian Pertemuan"> -->
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" type="text" placeholder="Deskripsi" rows="2">Membahas Keunggulan dan Kelemahan MongoDB</textarea>
+                        <label for="desk">Deskripsi</label>
+                        <textarea class="form-control" type="text" id="desk" name="deskripsi" placeholder="Deskripsi" rows="2"></textarea>
                     </div>
                     <div class="input-group form-group mb-3 ">
+                        <!-- <label for="datePickerEdit">Tanggal</label> -->
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-calendar" style="font-size: 15px;"></i></span>
                         </div>
-                        <input class="form-control" id="datepickerEdit" date-date-format="dd-month-yyyy">
+
+                        <input class="form-control" name="tanggal" id="datepickerEdit" date-date-format="yyyy-mm-dd">
                     </div>
                     <div class="form-group">
-                        <select class="form-control">
-                            <option>Pengganti</option>
-                            <option>Normal</option>
+                        <label for="status">Status Perkuliahan</label>
+                        <select id="status" name="status-perkuliahan" class="form-control">
+                            <option id="status1" hidden></option>
+                            <option id="status2" value="Normal">Normal</option>
+                            <option value="Pengganti">Pengganti</option>
                         </select>
                     </div>
+                    <div class="modal-footer">
+                        <a>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </a>
+                    </div>
                 </form>
+
             </div>
-            <div class="modal-footer">
-                <a href="<?php echo site_url('pertemuan') ?>">
-                    <button type="button" class="btn btn-primary">Update</button>
-                </a>
-            </div>
+
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
     $('#datepickerEdit').datepicker({
+        format:'dd/mm/yyyy',
         weekStart: 1,
         daysOfWeekHighlighted: "6,0",
         autoclose: true,
         todayHighlight: true,
     });
+    $('#tpk').on('change', function() {
+        $.ajax({
+            type: 'GET',
+            url: 'getCp/' + this.value + '',
+            dataType: 'html',
+            success: function(response) {
+                // console.log(response);
+                // $('#cp-pertemuan').show();
+                $('select[name="cp-edit"]').append(response);
+                // $('#cp-p').load();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log({
+                    XMLHttpRequest,
+                    textStatus,
+                    errorThrown
+                })
+            }
+        })
+
+    });
+    // $('#editForm').on('submit', function() {
+    //     var selectorStatus = document.getElementById('status');
+    //     var selectorCp = document.getElementById('cp-edit');
+    //     var selectorTopik = document.getElementById('tpk');
+
+    //     var id = $('#id-bap').val();
+    //     var topik = selectorTopik[selector.selectedIndex].value;
+    //     var cp = selectorCp[selector.selectedIndex].value;
+    //     var deskripsi = $('#desk').val();
+    //     var tanggal = $('#date').val();
+    //     var status = selectorStatus[selector.selectedIndex].value;
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "update/",
+    //         dataType: "JSON",
+    //         data: {
+    //             id_bap: id,
+    //             topik: topik,
+    //             cp: cp,
+    //             deskripsi:deskripsi,
+    //             tanggal:tanggal,
+    //             status: status
+    //         },
+    //         success: function(data) {
+    //             $("#id-bap").val("");
+    //             $("#tpk").val("");
+    //             $('#cp-edit').val("");
+    //             $("#desk").val("");
+    //             $("#date").val("");
+    //             $('#status').val("");
+    //             $('#modalEdit').modal('hide');
+    //             listPertemuan();
+    //         }
+    //     });
+    //     return false;
+    // });
+
+    // function checkStatus(){
+    //         var values = document.getElementById('status1').value;
+    //         if(values == 'Normal'){
+    //             document.getElementById('status2').value = 'Pengganti';
+    //         } else {
+    //             document.getElementById('status2').value = 'Normal';
+    //         }
+    //     }
 </script>

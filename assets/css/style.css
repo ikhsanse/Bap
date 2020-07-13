@@ -52,3 +52,7 @@
 	min-height: calc(100vh - 120px);
     margin-bottom: 0px;
 }
+.image-login img{
+	width: 130px;
+	height: auto;
+}

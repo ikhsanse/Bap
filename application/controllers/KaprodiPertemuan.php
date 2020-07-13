@@ -1,6 +1,6 @@
 <?php
 
-class Pertemuan extends CI_Controller
+class KaprodiPertemuan extends CI_Controller
 {
 
     function __construct()
@@ -16,16 +16,12 @@ class Pertemuan extends CI_Controller
         $this->load->view("master/mastercode");
         $data['nip'] = $this->session->userdata['user_id'];
         $data['nama'] = $this->session->userdata['user_nama'];
-        if ($this->session->userdata['user_role'] == '2') {
-            $this->load->view("master/header/dosen/head1", $data);
-        } elseif ($this->session->userdata['user_role'] == '3') {
-            $this->load->view("master/header/kaprodi/headerkps2", $data);
-        } elseif ($this->session->userdata['user_role'] == '4') {
-            $this->load->view("master/header/kaprodi/headerkps2", $data);
-        } elseif ($this->session->userdata['user_role'] == '5') {
-            $this->load->view("master/header/kaprodi/headerkps2", $data);
-        };
-        // $this->load->view("master/header/head1", $data);
+        if($this->session->userdata['user_role'] == '1'){
+            $this->load->view("master/header/admin/headeradm1", $data);
+        } else {
+            $this->load->view("master/header/kaprodi/headerkps1", $data);
+        }
+        
         $id = $this->input->get();
         $id_mkdosen = $id['id'];
         $datamk = $this->getKelas($id_mkdosen);
@@ -33,12 +29,13 @@ class Pertemuan extends CI_Controller
         $data['kelas'] = $datamk->nama_kelas;
         $data['matkul'] = $datamk->namamk;
         // var_dump($this->session->userdata);exit;
-        $this->load->view('main/dosen/listpertemuan', $data);
+        $this->load->view('main/kaprodi/pertemuankps', $data);
         $this->load->view('master/modal/modal', $data);
         $this->load->view('master/modal/modal1', $data);
-
-        $this->load->view('master/modal/modal2', $data);
+        
+        $this->load->view('master/modal/modal2',$data);
         $this->load->view("master/footer/foot");
+        
     }
 
     public function getKelas($id_mkdosen)
@@ -47,11 +44,11 @@ class Pertemuan extends CI_Controller
 
 
         // $session_data = array(
-        // 'user_id' => $this->session->userdata('user_id'),
-        // 'user_pass' => $this->session->userdata('user_pass'),
-        // 'user_nama' => $this->session->userdata('user_nama'),
-        // 'id_mkdosen' => $id_mkdosen
-        // 'kode_matkul' => $data[0]->kode_matkul
+            // 'user_id' => $this->session->userdata('user_id'),
+            // 'user_pass' => $this->session->userdata('user_pass'),
+            // 'user_nama' => $this->session->userdata('user_nama'),
+            // 'id_mkdosen' => $id_mkdosen
+            // 'kode_matkul' => $data[0]->kode_matkul
         // );
         $this->session->set_userdata('id_mkdosen', $id_mkdosen);
         return $data;
@@ -68,7 +65,7 @@ class Pertemuan extends CI_Controller
     public function getCp($id)
     {
         $data = array($this->list_pertemuan->get_cp_pertemuan($id));
-        // var_dump($id);exit;
+        // var_dump($data);exit;
         // $output = '<option value="" selected>Topik Utama</option>';
         foreach ($data[0] as $cp) {
             $output = '<option selected value="' . $cp->cp_pertemuan . '">' . $cp->cp_pertemuan . '</option>';
@@ -128,12 +125,11 @@ class Pertemuan extends CI_Controller
         $id_bap = $id['id_bap'];
 
         $datas = $this->list_pertemuan->get_pertemuan($id_bap);
-
+       
         return $datas;
     }
 
-    function update()
-    {
+    function update(){
         $data = $this->list_pertemuan->update_data();
         $id = $this->session->userdata('id_mkdosen');
         // echo $data;

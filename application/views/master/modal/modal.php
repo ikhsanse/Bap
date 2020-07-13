@@ -11,7 +11,7 @@
                 <h6><?php echo $matkul?> - <?php echo $kelas?></h6>
                 <form method="post" action="<?php echo site_url('pertemuan/setBap') ?>">
                     <div class="form-group">
-                        <input class="form-control" type="number" name="pertemuan" placeholder="Pertemuan Ke-">
+                        <input class="form-control" name="pertemuan" min="1" max="18" placeholder="Pertemuan Ke-" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="2">
                     </div>
                     <div class="form-group">
                         <select id="tpk-utama" class="form-control" name="topik">
@@ -40,7 +40,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-calendar" style="font-size: 15px;"></i></span>
                         </div>
-                        <input class="form-control" id="datepicker" name="tanggal" date-date-format="dd-month-yyyy">
+                        <input class="form-control" id="datepicker" name="tanggal" date-date-format="mm-dd-yyyy">
                     </div>
                     <div class="form-group">
                         <select name="status" class="form-control">
@@ -66,6 +66,7 @@
 
 <script type="text/javascript">
     $('#datepicker').datepicker({
+        format:'dd/mm/yyyy',
         weekStart: 1,
         daysOfWeekHighlighted: "6,0",
         autoclose: true,
@@ -79,7 +80,7 @@
             url: 'getCp/' + this.value + '',
             dataType: 'html',
             success: function(response) {
-                // console.log(response);
+                console.log(response);
                 // $('#cp-pertemuan').show();
                 $('select[name="cp-pertemuan"]').append(response);
                 // $('#cp-p').load();

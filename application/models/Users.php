@@ -1,5 +1,5 @@
 <?php
-class User_dosen extends CI_Model
+class Users extends CI_Model
 {
 
     function logged_in()
@@ -12,7 +12,7 @@ class User_dosen extends CI_Model
         // $pass = (json_encode($password));
         // var_dump($pass);exit;
         $this->db->select('*');
-        $this->db->from('dosen');
+        $this->db->from('users');
         $this->db->where('nip', $nip);
         $this->db->where('password',$password);
         $this->db->limit(1);
