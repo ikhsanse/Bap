@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalInput" aria-hidden="true">
+<div class="modal fade" id="modalKps" tabindex="-1" role="dialog" aria-labelledby="modalInput" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header justify-content-center navigation text-white pb-0">
@@ -8,19 +8,19 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="<?php echo site_url('pertemuan/update') ?>" id="editForm">
+                <form method="post" action="<?php echo site_url('kaprodipertemuan/update') ?>" id="editForm">
 
-                    <input hidden id="id-bap" name="id-bap">
-                    <input id="pertemuanAwal" hidden name="pertemuan-awal">
+                    <input hidden id="id-bap-kps" name="id-bap">
+                    <input id="pertemuanAwalKps" hidden name="pertemuan-awal">
                     <div class="form-group">
                         <label for="headerPertemuan">Pertemuan Ke-</label>
                        
-                        <input class="form-control" required name="pertemuan-baru" id="pertemuanBaru"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="2">
+                        <input class="form-control" required name="pertemuan-baru" id="pertemuanBaruKps"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="2">
                     </div>
                     <div class="form-group">
                         <label for="tpk">Topik Utama</label>
-                        <select id="tpk" name="topik-utama" required class="form-control">
-                            <option hidden id="topik"></option>
+                        <select id="tpkKps" name="topik-utama" required class="form-control">
+                            <option id="topikKps"></option>
                             <?php
                             foreach ($topik as $tpk) {
                                 echo '<option value="' . $tpk->kode_tpk . '">' . $tpk->tpk_utama . '</option>';
@@ -30,14 +30,14 @@
                     </div>
                     <div class="form-group" id="cp-p">
                         <label for="cp-edit">Capaian Pertemuan</label>
-                        <select readonly id="cp-edit" required class="form-control" name="cp-edit">
-                            <option id="cp">Capaian Pertemuan</option>
+                        <select readonly id="cp-edit-kps" required class="form-control" name="cp-edit">
+                            <option id="cpKps">Capaian Pertemuan</option>
                         </select>
                         <!-- <input id="cp-pertemuan" class="form-control" name="cp-pertemuan" placeholder="Capaian Pertemuan"> -->
                     </div>
                     <div class="form-group">
                         <label for="desk">Deskripsi</label>
-                        <textarea class="form-control" required type="text" id="desk" name="deskripsi" placeholder="Deskripsi" rows="2"></textarea>
+                        <textarea class="form-control" required type="text" id="deskKps" name="deskripsi" placeholder="Deskripsi" rows="2"></textarea>
                     </div>
                     <div class="input-group form-group mb-3 ">
                         <!-- <label for="datePickerEdit">Tanggal</label> -->
@@ -45,13 +45,13 @@
                             <span class="input-group-text"><i class="fa fa-calendar" style="font-size: 15px;"></i></span>
                         </div>
 
-                        <input class="form-control" name="tanggal" id="datepickerEdit" date-date-format="yyyy-mm-dd">
+                        <input class="form-control" name="tanggal" id="datepickerEditKps" date-date-format="yyyy-mm-dd">
                     </div>
                     <div class="form-group">
                         <label for="status">Status Perkuliahan</label>
                         <select id="status" name="status-perkuliahan" class="form-control">
-                            <option id="status1" hidden></option>
-                            <option id="status2" value="Normal">Normal</option>
+                            <option id="status1Kps" hidden></option>
+                            <option id="status2Kps" value="Normal">Normal</option>
                             <option value="Pengganti">Pengganti</option>
                         </select>
                     </div>
@@ -69,14 +69,14 @@
 </div>
 
 <script type="text/javascript">
-    $('#datepickerEdit').datepicker({
+    $('#datepickerEditKps').datepicker({
         format:'dd/mm/yyyy',
         weekStart: 1,
         daysOfWeekHighlighted: "6,0",
         autoclose: true,
         todayHighlight: true,
     });
-    $('#tpk').on('change', function() {
+    $('#tpkKps').on('change', function() {
         $.ajax({
             type: 'GET',
             url: 'getCp/' + this.value + '',
@@ -84,7 +84,7 @@
             success: function(response) {
                 // console.log(response);
                 // $('#cp-pertemuan').show();
-                $('select[name="cp-edit"]').append(response);
+                $('select[name="cp-edit-kps"]').append(response);
                 // $('#cp-p').load();
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {

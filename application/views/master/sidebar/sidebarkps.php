@@ -7,12 +7,11 @@
 
         <ul class="list-unstyled components text-white">
             <li class="active">
-                <a href="<?php echo site_url('admin')?>">Home</a>
+                <a href="<?php echo site_url('kaprodi')?>">Home</a>
             </li>
             <li>
                 <a href="<?php echo site_url('pilihrekapbulan')?>">Rekap</a>
             </li>
-
             <li>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Kelas</a>
                 <ul class="collapse list-unstyled ml-3" id="pageSubmenu">

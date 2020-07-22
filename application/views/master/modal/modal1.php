@@ -29,7 +29,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-calendar" style="font-size: 15px;"></i></span>
                         </div>
-                        <input class="form-control" disabled name="tanggal" id="datepickerDetail" date-date-format="yyyy-month-dd">
+                        <input class="form-control" disabled name="tanggal" id="datepickerDetail" date-date-format="dd-month-yyyy">
                     </div>
                     <div class="form-group">
                         <select id="status-detail" disabled name="status-perkuliahan" class="form-control">

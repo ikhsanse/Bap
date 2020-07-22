@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand navbar-dark navigation justify-content-between">
-            <a class="font-weight-bold navbar-brand mr-1 text-white"  href= "<?php echo site_url("homebap") ?>" ><i style="font-size: 30px;" class="fa fa-angle-left"></i></a>
+    <a class="font-weight-bold navbar-brand mr-1 text-white" style="font-size: 23;" href="<?php echo site_url("homebap") ?>"><i clas style="font-size: 30px;" class="fa fa-angle-left mr-2"></i><?php echo $matkul . ' ' . $kelas ?></a>
+
     <div class="d-inline">
         <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown">
@@ -15,7 +16,7 @@
                         </div>
                     </h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?php echo site_url('auth/logout')?>">Log Out</a>
+                    <a class="dropdown-item" href="<?php echo site_url('auth/logout') ?>">Log Out</a>
                 </div>
             </li>
         </ul>

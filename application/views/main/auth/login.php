@@ -16,7 +16,7 @@
                     <div class="col-lg-6 pt-1">
                         <form method="POST" action="<?php echo site_url("auth") ?>">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Username/NIP" name="username" type="text">
+                                <input class="form-control" placeholder="Masukan NIP" name="username" type="text">
                                 <?php echo form_error('username'); ?>
                             </div>
                             <div class="form-group">

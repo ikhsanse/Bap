@@ -17,10 +17,10 @@ class Kaprodi extends CI_Controller
             $data['prodi'] = '111';
             $this->session->set_userdata('id_prodi', $data['prodi']);
         } elseif ($this->session->userdata['user_role'] == '4') {
-            $data['prodi'] = '112';
+            $data['prodi'] = '113';
             $this->session->set_userdata('id_prodi', $data['prodi']);
         } elseif ($this->session->userdata['user_role'] == '5') {
-            $data['prodi'] = '113';
+            $data['prodi'] = '112';
             $this->session->set_userdata('id_prodi', $data['prodi']);
         } else {
             $this->session->set_userdata('id_prodi', null);
@@ -28,7 +28,7 @@ class Kaprodi extends CI_Controller
         $this->session->set_userdata('id_prodi', $data['prodi']);
         // var_dump($this->session->userdata);exit;
         $this->load->view("master/header/kaprodi/headerkps", $data);
-        // $this->load->view("master/sidebar/sidebar");
+        $this->load->view("master/sidebar/sidebarkps");
         $this->load->view('main/kaprodi/listkelas', $data);
         $this->load->view("master/footer/foot");
     }

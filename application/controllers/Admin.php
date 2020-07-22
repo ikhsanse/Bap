@@ -10,13 +10,17 @@ class Admin extends CI_Controller
     public function index()
     {
         $this->load->view("master/mastercode");
+        
         $data['nip'] = $this->session->userdata['user_id'];
         $data['nama'] = $this->session->userdata['user_nama'];
 
         // var_dump($this->session->userdata);exit;
+        $this->session->set_userdata('id_prodi', null);
         $this->load->view("master/header/admin/headeradm", $data);
-        // $this->load->view("master/sidebar/sidebar");
+        $this->load->view("master/sidebar/sidebar");
+       
         $this->load->view('main/admin/listallkelas', $data);
+
         $this->load->view("master/footer/foot");
     }
 

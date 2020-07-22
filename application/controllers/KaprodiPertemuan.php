@@ -16,24 +16,27 @@ class KaprodiPertemuan extends CI_Controller
         $this->load->view("master/mastercode");
         $data['nip'] = $this->session->userdata['user_id'];
         $data['nama'] = $this->session->userdata['user_nama'];
-        if($this->session->userdata['user_role'] == '1'){
-            $this->load->view("master/header/admin/headeradm1", $data);
-        } else {
-            $this->load->view("master/header/kaprodi/headerkps1", $data);
-        }
-        
         $id = $this->input->get();
         $id_mkdosen = $id['id'];
         $datamk = $this->getKelas($id_mkdosen);
         $data['topik'] = $this->getTopikPertemuan($datamk->kode_matkul);
         $data['kelas'] = $datamk->nama_kelas;
         $data['matkul'] = $datamk->namamk;
+        if($this->session->userdata['user_role'] == '1'){
+            $this->load->view("master/header/admin/headeradm1", $data);
+            $this->load->view("master/sidebar/sidebar");
+        } else {
+            $this->load->view("master/header/kaprodi/headerkps1", $data);
+            $this->load->view("master/sidebar/sidebarkps");
+        }
+
         // var_dump($this->session->userdata);exit;
         $this->load->view('main/kaprodi/pertemuankps', $data);
         $this->load->view('master/modal/modal', $data);
         $this->load->view('master/modal/modal1', $data);
         
         $this->load->view('master/modal/modal2',$data);
+        $this->load->view('master/modal/modalEditKps',$data);
         $this->load->view("master/footer/foot");
         
     }
@@ -133,7 +136,7 @@ class KaprodiPertemuan extends CI_Controller
         $data = $this->list_pertemuan->update_data();
         $id = $this->session->userdata('id_mkdosen');
         // echo $data;
-        return redirect('pertemuan/?id=' . $id);
+        return redirect('kaprodipertemuan/?id=' . $id);
         // return redirect()
         // echo json_encode($data);
     }

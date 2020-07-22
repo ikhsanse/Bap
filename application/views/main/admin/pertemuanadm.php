@@ -14,9 +14,12 @@
                 <thead>
                     <tr>
                         <th hidden>ID</th>
-                        <!-- <th scope="col">#</th> -->
+                        <th hidden scope="col">Kelas</th>
+                        <th hidden scope="col">Mata Kuliah</th>
                         <th scope="col">Pertemuan</th>
                         <th scope="col">Topik Utama</th>
+                        <th scope="col">Capaian</th>
+                        <th scope="col">Deskripsi Materi</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
@@ -61,9 +64,13 @@
                         for (i = 0; i < data.length; i++) {
                             html += '<tr>' +
                                 '<td hidden>' + data[i].id_bap + '</td>' +
+                                '<td hidden>' + data[i].kelas + '</td>' +
+                                '<td hidden>' + data[i].matakuliah + '</td>' +
                                 // '<td>' + no++ + '</td>' +
                                 '<td>' + 'Pertemuan Ke-' + data[i].pertemuan + '</td>' +
                                 '<td>' + data[i].topik +'</td>' +
+                                '<td>' + data[i].cp_pertemuan + '</td>' +
+                                '<td>' + data[i].deskripsi +'</td>' +
                                 '<td>' + data[i].tanggal + '</td>' +
                                 '<td>' + data[i].status + '</td>' +
                                 '<td>' +

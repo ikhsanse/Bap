@@ -58,6 +58,7 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
+                    console.log(data);
                     var html = '';
                     var i;
                     var no = 1;

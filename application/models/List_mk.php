@@ -2,12 +2,13 @@
 
 class List_mk extends CI_Model {
     function get_mkdosen($nip) {
-        $this->db->select('md.id_mkdosen, md.id_kelas, md.id_prodi, md.kode_matkul, md.nip_dosen, d.nama, k.nama_kelas, k.semester, mk.namamk');
+        $this->db->select('md.id_mkdosen, md.id_kelas, md.id_prodi, md.kode_matkul, md.status, md.nip_dosen, d.nama, k.nama_kelas, k.semester, mk.namamk');
         $this->db->from('mk_dosen as md');
         $this->db->join('users as d', 'd.nip=md.nip_dosen');
         $this->db->join('kelas as k', 'k.id_kelas=md.id_kelas');
         $this->db->join('matakuliah as mk', 'mk.kodemk=md.kode_matkul');
         $this->db->where('md.nip_dosen', $nip);
+        $this->db->where('md.status', 'active');
         $query= $this->db->get();
         
         if ($query->num_rows() == 0) {
@@ -18,7 +19,7 @@ class List_mk extends CI_Model {
     }
 
     function get_kelas_prodi($id){
-        $this->db->select('md.id_mkdosen, md.id_kelas, md.id_prodi, md.kode_matkul, md.nip_dosen, d.nama, k.nama_kelas, k.semester, mk.namamk');
+        $this->db->select('md.id_mkdosen, md.id_kelas, md.status, md.thn_masuk_kls, md.id_prodi, md.kode_matkul, md.nip_dosen, d.nama, k.nama_kelas, k.semester, mk.namamk');
         $this->db->from('mk_dosen as md');
         $this->db->join('users as d', 'd.nip=md.nip_dosen');
         $this->db->join('kelas as k', 'k.id_kelas=md.id_kelas');
@@ -34,7 +35,7 @@ class List_mk extends CI_Model {
 
     }
     function get_all_kelas() {
-        $this->db->select('md.id_mkdosen, md.id_kelas, md.id_prodi, md.kode_matkul, md.nip_dosen, d.nama, k.nama_kelas, k.semester, mk.namamk, pd.namaprod');
+        $this->db->select('md.id_mkdosen, md.id_kelas, md.status, md.thn_masuk_kls, md.id_prodi, md.kode_matkul, md.nip_dosen, d.nama, k.nama_kelas, k.semester, mk.namamk, pd.namaprod');
         $this->db->from('mk_dosen as md');
         $this->db->join('users as d', 'd.nip=md.nip_dosen');
         $this->db->join('kelas as k', 'k.id_kelas=md.id_kelas');

@@ -23,7 +23,7 @@ class Homebap extends CI_Controller
         } elseif ($this->session->userdata['user_role'] == '5') {
             $this->load->view("master/header/kaprodi/headerkps", $data);
         }
-        // $this->load->view("master/sidebar/sidebar");
+        $this->load->view("master/sidebar/sidebar");
         $this->load->view('main/dosen/listmk', $data);
         $this->load->view("master/footer/foot");
     }
@@ -31,13 +31,6 @@ class Homebap extends CI_Controller
     public function getMatkulList()
     {
         $data = $this->list_mk->get_mkdosen($this->session->userdata['user_id']);
-        // $data = json_encode($datamk);
-        // $data = array();
-        // $data['data'] = $datamk;
-        // var_dump($datamk);exit;
-        // var_dump($data)
-
-
         echo json_encode($data);
     }
 };

@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body pb-0">
-                <h6><?php echo $matkul?> - <?php echo $kelas?></h6>
+                <h6><?php echo $matkul ?> - <?php echo $kelas ?></h6>
                 <form method="post" action="<?php echo site_url('pertemuan/setBap') ?>">
                     <div class="form-group">
                         <input class="form-control" name="pertemuan" min="1" max="18" placeholder="Pertemuan Ke-" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="2">
@@ -18,7 +18,7 @@
                             <option value="">Topik Utama</option>
                             <?php
                             foreach ($topik as $tpk) {
-                                echo '<option value="' . $tpk->tpk_utama . '">' . $tpk->tpk_utama . '</option>';
+                                echo '<option value="' . $tpk->kode_tpk . '">' . $tpk->tpk_utama . '</option>';
                             }
                             ?>
                         </select>
@@ -51,6 +51,7 @@
                     <div hidden class="form-group">
                         <input class="form-control" type="text" name="matkul" value="<?php echo $matkul ?>" placeholder="">
                         <input class="form-control" type="text" name="kelas" value="<?php echo $kelas ?>" placeholder="">
+                        <input class="form-control" type="text" name="prodi" value="<?php echo $prodi ?>" placeholder="">
                     </div>
                     <div class="modal-footer mb-0">
                         <a>
@@ -66,7 +67,7 @@
 
 <script type="text/javascript">
     $('#datepicker').datepicker({
-        format:'dd/mm/yyyy',
+        format: 'dd/mm/yyyy',
         weekStart: 1,
         daysOfWeekHighlighted: "6,0",
         autoclose: true,
@@ -95,4 +96,5 @@
         })
 
     });
+
 </script>

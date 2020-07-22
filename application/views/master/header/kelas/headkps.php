@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand navbar-dark navigation justify-content-between">
+<nav class="navbar navbar-expand navbar-dark navigation justify-content-between" id="content">
     <div class="d-inline">
-        <a class="font-weight-bold navbar-brand mr-1 text-white" style="font-size: 23;" href="<?php echo site_url("admin") ?>"><i clas style="font-size: 30px;" class="fa fa-angle-left mr-2"></i><?php echo $matkul . ' ' . $kelas ?></a>
+        <a class="font-weight-bold navbar-brand mr-1 text-white" style="font-size: 25px;" href="<?php echo site_url('kaprodi') ?>"><?php echo 'Daftar Kelas Prodi '.$prodi ?></a>
 
         <a type="button" onclick="openNav()" class="text-white"><i style="font-size: 25px;" class="fa fa-align-left"></i></a>
-    </div>
 
+    </div>
     <div class="d-inline">
         <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown">
