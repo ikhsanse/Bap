@@ -80,7 +80,7 @@
                    [0, 'asc']
                ],
                "buttons": [{
-                   'text': 'Add BAP',
+                   'text': 'Tambah BAP',
                    'action': function(e, dt, node, config) {
                        $('#modalBAP').modal('show')
                    }

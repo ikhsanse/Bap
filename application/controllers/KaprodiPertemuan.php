@@ -57,6 +57,18 @@ class KaprodiPertemuan extends CI_Controller
         return $data;
     }
 
+    public function getCp($id)
+    {
+        $data = array($this->list_pertemuan->get_cp_pertemuan($id));
+        // var_dump($id);exit;
+        // $output = '<option value="" selected>Topik Utama</option>';
+        foreach ($data[0] as $cp) {
+            $output = '<option selected value="' . $cp->cp_pertemuan . '">' . $cp->cp_pertemuan . '</option>';
+        }
+
+        echo $output;
+    }
+
 
     public function getTopikPertemuan($id)
     {
@@ -64,17 +76,6 @@ class KaprodiPertemuan extends CI_Controller
 
         // var_dump($data);exit;
         return $data;
-    }
-    public function getCp($id)
-    {
-        $data = array($this->list_pertemuan->get_cp_pertemuan($id));
-        // var_dump($data);exit;
-        // $output = '<option value="" selected>Topik Utama</option>';
-        foreach ($data[0] as $cp) {
-            $output = '<option selected value="' . $cp->cp_pertemuan . '">' . $cp->cp_pertemuan . '</option>';
-        }
-
-        echo $output;
     }
 
     public function setBap()

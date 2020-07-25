@@ -49,6 +49,7 @@
                         </select>
                     </div>
                     <div hidden class="form-group">
+                        <input class="form-control" type="text" name="kode-matkul" value="<?php echo $kode_matkul ?>" placeholder="">
                         <input class="form-control" type="text" name="matkul" value="<?php echo $matkul ?>" placeholder="">
                         <input class="form-control" type="text" name="kelas" value="<?php echo $kelas ?>" placeholder="">
                         <input class="form-control" type="text" name="prodi" value="<?php echo $prodi ?>" placeholder="">
@@ -96,5 +97,4 @@
         })
 
     });
-
 </script>

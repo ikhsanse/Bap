@@ -23,6 +23,7 @@ class Pertemuan extends CI_Controller
         $data['topik'] = $this->getTopikPertemuan($datamk->kode_matkul);
         $data['kelas'] = $datamk->nama_kelas;
         $data['matkul'] = $datamk->namamk;
+        $data['kode_matkul'] = $datamk->kode_matkul;
         
         if ($this->session->userdata['user_role'] == '2') {
             $this->load->view("master/header/dosen/head1", $data);
@@ -97,6 +98,7 @@ class Pertemuan extends CI_Controller
             $data['bap_id_mkdosen'] = $this->session->userdata['id_mkdosen'];
             $data['pertemuan'] = $this->input->post('pertemuan', true);
             $data['bap_id_prodi'] = $this->input->post('prodi');
+            $data['bap_kode_matkul'] = $this->input->post('kode-matkul');
             // var_dump($data['tanggal']);exit;
             // $data['prodi'] = $this->list_pertemuan->get_prodi($data['kelas']);
             $jmlpertemuan = $this->list_pertemuan->check_jumlah($data['bap_id_mkdosen']);

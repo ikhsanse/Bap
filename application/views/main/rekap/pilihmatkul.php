@@ -12,28 +12,44 @@
                     </div> -->
                     <div class="col-lg-8 pt-1">
                         <form method="POST" action="<?php echo site_url("rekap") ?>">
-                            <div class="form-group">
+                            <!-- <div hidden class="form-group">
                                 <select class="form-control" name="prodi">
-                                    <!-- <option value="">Prodi</option> -->
+                                    <option value="">Prodi</option>
                                     <option value="">Semua Prodi</option>
                                     <option value="111">TI</option>
                                     <option value="112">TMJ</option>
                                     <option value="113">TMD</option>
                                 </select>
-                                <!-- <select class="form-control">
-                            <option>Topik Utama</option>
-                            <option>MongoDB</option>
-                        </select> -->
                             </div>
-                            <div class="input-group form-group mb-1 ">
+                            <div class="form-group">
+                                <select class="form-control" name="dosen">
+                                    <option value="">Dosen Pengajar</option>
+                                    <?php
+                                    foreach ($dosen as $dsn) {
+                                        echo '<option value="' . $dsn->nip . '">' . $dsn->nip . ' - ' . $dsn->nama . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div> -->
+                            <div class="form-group">
+                                <select class="form-control" name="matkul">
+                                    <option value="">Mata Kuliah</option>
+                                    <?php
+                                    foreach ($matkul as $mkl) {
+                                        echo '<option value="' . $mkl->kodemk . '">' . $mkl->namamk . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="input-group form-group mb-2 ">
                                 <div class="row">
                                     <div class="input-group-prepend col">
                                         <span class="input-group-text"><i class="fa fa-calendar" style="font-size: 15px;"></i></span>
-                                        <input class="form-control" id="monthpicker" placeholder="Tanggal Awal" name="tanggal-awal" date-date-format="mm-dd-yyyy">
+                                        <input class="form-control" id="monthpickerkps" placeholder="Tanggal Awal" name="tanggal-awal" date-date-format="mm-dd-yyyy">
                                     </div>
                                     <div class="input-group-prepend col">
                                         <span class="input-group-text"><i class="fa fa-calendar" style="font-size: 15px;"></i></span>
-                                        <input class="form-control" id="monthpicker1" placeholder="Tanggal Akhir" name="tanggal-akhir" date-date-format="mm-dd-yyyy">
+                                        <input class="form-control" id="monthpickerkps1" placeholder="Tanggal Akhir" name="tanggal-akhir" date-date-format="mm-dd-yyyy">
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +74,7 @@
     </div>
 </div>
 <script>
-    $('#monthpicker').datepicker({
+    $('#monthpickerkps').datepicker({
         format: 'dd-mm-yyyy',
         // weekStart: 1,
         // startView: "months",
@@ -71,7 +87,7 @@
     });
     // $('#monthpicker').datepicker("setDate", new Date());
 
-    $('#monthpicker1').datepicker({
+    $('#monthpickerkps1').datepicker({
         format: 'dd-mm-yyyy',
         weekStart: 1,
         daysOfWeekHighlighted: "6,0",

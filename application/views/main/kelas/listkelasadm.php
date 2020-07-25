@@ -67,7 +67,7 @@
                 [0, 'asc']
             ],
             "buttons": [{
-                'text': 'Add Kelas',
+                'text': 'Tambah Kelas',
                 'action': function(e, dt, node, config) {
                     $('#addKelas').modal('show')
                 }

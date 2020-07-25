@@ -52,7 +52,7 @@
         function listPertemuan() {
             $.ajax({
                 type: 'ajax',
-                url: "rekap/getRekapProdi",
+                url: "rekap/getRekapMatkul",
                 async: false,
                 dataType: 'json',
                 success: function(data) {

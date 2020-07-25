@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="<?php echo site_url('kaprodipertemuan/update') ?>" id="editForm">
+                <form method="post" action="<?php echo site_url('kaprodipertemuan/update') ?>" id="editFormKps">
 
                     <input hidden id="id-bap-kps" name="id-bap">
                     <input id="pertemuanAwalKps" hidden name="pertemuan-awal">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group" id="cp-p">
                         <label for="cp-edit">Capaian Pertemuan</label>
-                        <select readonly id="cp-edit-kps" required class="form-control" name="cp-edit">
+                        <select readonly id="cp-edit-kps" class="form-control" name="cp-edit">
                             <option id="cpKps">Capaian Pertemuan</option>
                         </select>
                         <!-- <input id="cp-pertemuan" class="form-control" name="cp-pertemuan" placeholder="Capaian Pertemuan"> -->
@@ -48,8 +48,8 @@
                         <input class="form-control" name="tanggal" id="datepickerEditKps" date-date-format="yyyy-mm-dd">
                     </div>
                     <div class="form-group">
-                        <label for="status">Status Perkuliahan</label>
-                        <select id="status" name="status-perkuliahan" class="form-control">
+                        <label for="statusKps">Status Perkuliahan</label>
+                        <select id="statusKps" name="status-perkuliahan" class="form-control">
                             <option id="status1Kps" hidden></option>
                             <option id="status2Kps" value="Normal">Normal</option>
                             <option value="Pengganti">Pengganti</option>
@@ -82,9 +82,9 @@
             url: 'getCp/' + this.value + '',
             dataType: 'html',
             success: function(response) {
-                // console.log(response);
+                console.log(response);
                 // $('#cp-pertemuan').show();
-                $('select[name="cp-edit-kps"]').append(response);
+                $('select[name="cp-edit"]').append(response);
                 // $('#cp-p').load();
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {

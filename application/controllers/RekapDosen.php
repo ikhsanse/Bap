@@ -1,6 +1,6 @@
 <?php
 
-class PilihRekapBulan extends CI_Controller {
+class RekapDosen extends CI_Controller {
 
     function __construct()
     {
@@ -17,27 +17,24 @@ class PilihRekapBulan extends CI_Controller {
         $data['nama'] = $this->session->userdata['user_nama'];
         // $prodi = $this->getProdi($this->session->userdata['id_prodi']);
         // $data['prodi'] = $prodi->namaprod;
+        $data['dosen'] = $this->getDosen();
 
         if ($this->session->userdata['user_role'] == '2') {
             $this->load->view("master/header/dosen/head1", $data);
         } elseif ($this->session->userdata['user_role'] == '3') {
             $this->load->view("master/header/rekap/headrekap", $data);
             $this->load->view("master/sidebar/sidebarkps");
-            $this->load->view('main/rekap/pilihbulankps', $data);
         } elseif ($this->session->userdata['user_role'] == '4') {
             $this->load->view("master/header/rekap/headrekap", $data);
             $this->load->view("master/sidebar/sidebarkps");
-            $this->load->view('main/rekap/pilihbulankps', $data);
         } elseif ($this->session->userdata['user_role'] == '5') {
             $this->load->view("master/header/rekap/headrekap", $data);
             $this->load->view("master/sidebar/sidebarkps");
-            $this->load->view('main/rekap/pilihbulankps', $data);
         } elseif ($this->session->userdata['user_role'] == '1') {
             $this->load->view("master/header/admin/headrekapadm", $data);
             $this->load->view("master/sidebar/sidebar");
-            $this->load->view('main/rekap/pilihbulan', $data);
         };
-
+        $this->load->view('main/rekap/pilihdosen', $data);
         $this->load->view("master/footer/foot");
     }
     public function getProdi($id_prodi)
@@ -47,7 +44,13 @@ class PilihRekapBulan extends CI_Controller {
         $this->session->set_userdata('id_mkdosen',);
         return $data;
     }
-
+    
+    public function getDosen()
+    {
+        $this->load->model('kelas_mk');
+        $data = $this->kelas_mk->get_dosen();
+        return $data;
+    }
 
     public function getTopikPertemuan($id)
     {

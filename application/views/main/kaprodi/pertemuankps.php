@@ -2,6 +2,41 @@
     <div class="col-lg-10 mx-auto ml-5 mt-2">
         <table id="list" class="table table-striped text-center ">
             <div class="row">
+                <div class="col-lg-6">
+                    <?php if ($this->session->flashdata('success')) { ?>
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <h4 class="alert-heading">Success</h4>
+                            <?php echo $this->session->flashdata('success'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php } else if ($this->session->flashdata('error')) {  ?>
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <h4 class="alert-heading">Error</h4>
+                            <?php echo $this->session->flashdata('error'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php } else if ($this->session->flashdata('warning')) {  ?>
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <?php echo $this->session->flashdata('warning'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php } else if ($this->session->flashdata('info')) {  ?>
+                        <div class="alert alert-info alert-dismissible" role="alert">
+                            <?php echo $this->session->flashdata('info'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="row">
                 <div class="mb-0 pb-0" id="tbl">
                     <thead>
                         <tr>

@@ -10,7 +10,21 @@
                 <a href="<?php echo site_url('admin')?>">Home</a>
             </li>
             <li>
-                <a href="<?php echo site_url('pilihrekapbulan')?>">Rekap</a>
+                <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Rekap</a>
+                <ul class="collapse list-unstyled ml-3" id="pageSubmenu1">
+                    <li>
+                        <a href="<?php echo site_url('pilihrekapbulan')?>">Rekap</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('rekapmatkul')?>">Per Matakuliah</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('rekapkelas')?>">Per Kelas</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('rekapdosen')?>">Per Dosen</a>
+                    </li>
+                </ul>
             </li>
 
             <li>

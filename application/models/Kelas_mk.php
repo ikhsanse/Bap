@@ -41,6 +41,21 @@ class Kelas_mk extends CI_Model
         $this->db->distinct();
         $this->db->select('nama_kelas');
         $this->db->order_by("nama_kelas", "asc");
+        // $this->db->where('id_prodi', '111');
+        $query = $this->db->get('kelas');
+
+        if ($query->num_rows() == 0) {
+            return FALSE;
+        } else {
+            return $query->result();
+        }
+    }
+    public function get_kelas_prodi($prodi)
+    {
+        $this->db->distinct();
+        $this->db->select('nama_kelas');
+        $this->db->order_by("nama_kelas", "asc");
+        $this->db->where('id_prodi', $prodi);
         $query = $this->db->get('kelas');
 
         if ($query->num_rows() == 0) {
