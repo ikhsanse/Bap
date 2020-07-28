@@ -1,13 +1,18 @@
 <?php
 
-class RekapMatkul extends CI_Controller {
+class RekapMatkul extends CI_Controller
+{
 
     function __construct()
     {
         parent::__construct();
-        $this->load->model('rekap_pertemuan');
-        $this->load->library('form_validation');
-        $this->load->helper('url');
+        if ($this->session->userdata['user_id'] == true) {
+            $this->load->model('rekap_pertemuan');
+            $this->load->library('form_validation');
+            $this->load->helper('url');
+        } else {
+            return redirect(site_url('auth'));
+        }
     }
 
     public function index()
@@ -49,7 +54,7 @@ class RekapMatkul extends CI_Controller {
         $this->session->set_userdata('id_mkdosen',);
         return $data;
     }
-    
+
     public function getMatkul()
     {
         $this->load->model('kelas_mk');
@@ -65,5 +70,3 @@ class RekapMatkul extends CI_Controller {
         return $data;
     }
 }
-
-?>

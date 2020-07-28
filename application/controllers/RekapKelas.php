@@ -5,9 +5,13 @@ class RekapKelas extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('rekap_pertemuan');
-        $this->load->library('form_validation');
-        $this->load->helper('url');
+        if ($this->session->userdata['user_id'] == true) {
+            $this->load->model('rekap_pertemuan');
+            $this->load->library('form_validation');
+            $this->load->helper('url');
+        } else {
+            return redirect(site_url('auth'));
+        }
     }
 
     public function index()

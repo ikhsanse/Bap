@@ -4,9 +4,13 @@ class Kelasmk extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('kelas_mk');
-        $this->load->library('form_validation');
-        $this->load->helper('url');
+        if ($this->session->userdata['user_id'] == true) {
+            $this->load->model('kelas_mk');
+            $this->load->library('form_validation');
+            $this->load->helper('url');
+        } else {
+            return redirect(site_url('auth'));
+        }
     }
 
     public function index()
@@ -47,17 +51,13 @@ class Kelasmk extends CI_Controller
 
     public function getAllMk()
     {
-
-        // $bln = $this->session->userdata['bulan'];
         $prodi = $this->session->userdata['id_prodi'];
-        // var_dump($prodi);exit;
         if ($prodi != null) {
             $data = $this->kelas_mk->get_matkul_prodi($prodi);
         } else {
             $data = $this->kelas_mk->get_matkul_jurusan();
         };
 
-        // var_dump($data);exit;
         echo json_encode($data);
     }
 
@@ -81,8 +81,6 @@ class Kelasmk extends CI_Controller
     }
     public function getMatkul()
     {
-        // $prodi = $this->session->userdata['id_prodi'];
-        // var_dump($prodi);exit;
 
         $data = $this->kelas_mk->get_matkul_all();
 

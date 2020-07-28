@@ -6,9 +6,13 @@ class Rekap extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('rekap_pertemuan');
-        $this->load->library('form_validation');
-        $this->load->helper('url');
+        if ($this->session->userdata['user_id'] == true) {
+            $this->load->model('rekap_pertemuan');
+            $this->load->library('form_validation');
+            $this->load->helper('url');
+        } else {
+            return redirect(site_url('auth'));
+        }
     }
 
     public function index()
@@ -70,7 +74,6 @@ class Rekap extends CI_Controller
         $akhir = $this->session->userdata['tanggal-akhir'];
         $prodirekap = $this->session->userdata['prodi-rekap'];
         $prodi = $this->session->userdata['id_prodi'];
-        // var_dump($awal);exit;
         if ($prodi != null) {
             $data = $this->rekap_pertemuan->get_rekap_prodi($prodi, $awal, $akhir);
         } else {
@@ -81,7 +84,6 @@ class Rekap extends CI_Controller
             }
         };
 
-        // var_dump($data);exit;
         echo json_encode($data);
     }
 

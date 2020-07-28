@@ -72,7 +72,7 @@
                             '<td>' + data[i].semester + '</td>' +
                             '<td>' + data[i].status + '</td>' +
                             '<td>' +
-                            '<a href="kaprodipertemuan/?id=' + data[i].id_mkdosen + '" class="btn btn-success btn- " data-id="' + data[i].id_mkdosen + '" data-matkul="' + data[i].id_kelas + '"data-matkul="' + data[i].kode_matkul + '">List Pertemuan</a>' + ' ' +
+                            '<a href="KaprodiPertemuan/?id=' + data[i].id_mkdosen + '" class="btn btn-success btn- " data-id="' + data[i].id_mkdosen + '" data-matkul="' + data[i].id_kelas + '"data-matkul="' + data[i].kode_matkul + '">List Pertemuan</a>' + ' ' +
                             // '<a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord" data-id="' + data[i].id + '">Delete</a>' +
                             '</td>' +
                             '</tr>';

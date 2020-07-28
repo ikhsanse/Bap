@@ -13,16 +13,16 @@
                 <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Rekap</a>
                 <ul class="collapse list-unstyled ml-3" id="pageSubmenu1">
                     <li>
-                        <a href="<?php echo site_url('pilihrekapbulan')?>">Rekap</a>
+                        <a href="<?php echo site_url('PilihRekapBulan')?>">Rekap</a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('rekapmatkul')?>">Per Matakuliah</a>
+                        <a href="<?php echo site_url('RekapMatkul')?>">Per Matakuliah</a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('rekapkelas')?>">Per Kelas</a>
+                        <a href="<?php echo site_url('RekapKelas')?>">Per Kelas</a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('rekapdosen')?>">Per Dosen</a>
+                        <a href="<?php echo site_url('RekapDosen')?>">Per Dosen</a>
                     </li>
                 </ul>
             </li>
@@ -31,10 +31,10 @@
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Kelas</a>
                 <ul class="collapse list-unstyled ml-3" id="pageSubmenu">
                     <li>
-                        <a href="<?php echo site_url('kelas')?>">Daftar Kelas</a>
+                        <a href="<?php echo site_url('Kelas')?>">Daftar Kelas</a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('kelasmk')?>">Matakuliah</a>
+                        <a href="<?php echo site_url('Kelasmk')?>">Matakuliah</a>
                     </li>
                 </ul>
             </li>

@@ -6,9 +6,13 @@ class Pertemuan extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('list_pertemuan');
-        $this->load->library('form_validation');
-        $this->load->helper('url');
+        if ($this->session->userdata['user_id'] == true) {
+            $this->load->model('list_pertemuan');
+            $this->load->library('form_validation');
+            $this->load->helper('url');
+        } else {
+            return redirect(site_url('auth'));
+        }
     }
 
     public function index()
@@ -173,13 +177,17 @@ class Pertemuan extends CI_Controller
                 return redirect('pertemuan/?id=' . $id);
             } else {
                 $data = $this->list_pertemuan->update_data();
+                $msg = 'Data behasil diubah';
+                $this->session->set_flashdata('success', $msg);
                 $id = $this->session->userdata('id_mkdosen');
-                // echo $data;
+
                 return redirect('pertemuan/?id=' . $id);
             }
         } elseif ($check_edit == $awal) {
             // var_dump($check_edit, $pertemuan);exit;
             $data = $this->list_pertemuan->update_data();
+            $msg = 'Data behasil diubah';
+            $this->session->set_flashdata('success', $msg);
             $id = $this->session->userdata('id_mkdosen');
             return redirect('pertemuan/?id=' . $id);
         }
