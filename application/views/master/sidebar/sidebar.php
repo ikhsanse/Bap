@@ -38,6 +38,9 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="<?php echo site_url('ListUser')?>">Tambah User</a>
+            </li>
         </ul>
     </nav>
 </div>

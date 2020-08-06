@@ -56,7 +56,7 @@
 </div>
 <script>
     $('#monthpickerkps').datepicker({
-        format: 'dd-mm-yyyy',
+        format: 'dd/mm/yyyy',
         // weekStart: 1,
         // startView: "months",
         // minViewMode: "months",
@@ -69,7 +69,7 @@
     // $('#monthpicker').datepicker("setDate", new Date());
 
     $('#monthpickerkps1').datepicker({
-        format: 'dd-mm-yyyy',
+        format: 'dd/mm/yyyy',
         weekStart: 1,
         daysOfWeekHighlighted: "6,0",
         autoclose: true,

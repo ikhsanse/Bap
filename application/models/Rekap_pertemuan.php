@@ -20,8 +20,8 @@ class Rekap_pertemuan extends CI_Model {
         $this->db->from('bap as b');
         $this->db->join('users as u', 'u.nip=b.nip_dosen');
         $this->db->where('bap_id_prodi', $prodi);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') >= ", $awal);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') <= ", $akhir);
+        $this->db->where(" b.tanggal >= ", $awal);
+        $this->db->where("b.tanggal <= ", $akhir);
         $query =$this->db->get();
 
         if ($query->num_rows() == 0) {
@@ -36,8 +36,8 @@ class Rekap_pertemuan extends CI_Model {
         $this->db->select("to_char(b.tanggal,'DD/MM/YYYY') AS tanggal");
         $this->db->from('bap as b');
         $this->db->join('users as u', 'u.nip=b.nip_dosen');
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') >= ", $awal);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') <= ", $akhir);
+        $this->db->where(" b.tanggal >= ", $awal);
+        $this->db->where("b.tanggal <= ", $akhir);
         $query =$this->db->get();
         // var_dump($query->result());exit;
         if ($query->num_rows() == 0) {
@@ -55,8 +55,11 @@ class Rekap_pertemuan extends CI_Model {
         $this->db->from('bap as b');
         $this->db->join('users as u', 'u.nip=b.nip_dosen');
         $this->db->where('nip_dosen', $dosen);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') >= ", $awal);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') <= ", $akhir);
+        // $this->db->where('tanggal BETWEEN  "'. date('Y-m-d', strtotime($awal)). '" and "'. date('Y-m-d', strtotime($akhir)).'"');
+        // $this->db->where("to_char(tanggal,'dd/mm/yyyy') >= ", $awal);
+        // $this->db->where("to_char(tanggal,''dd/mm/yyyy') < ", $akhir);
+        $this->db->where(" b.tanggal >= ", $awal);
+        $this->db->where("b.tanggal <= ", $akhir);
         $query =$this->db->get();
         // var_dump($query->result());exit;
         if ($query->num_rows() == 0) {
@@ -74,8 +77,8 @@ class Rekap_pertemuan extends CI_Model {
         $this->db->join('users as u', 'u.nip=b.nip_dosen');
         $this->db->where('bap_id_prodi', $prodi);
         $this->db->where('nip_dosen', $dosen);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') >= ", $awal);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') <= ", $akhir);
+        $this->db->where(" b.tanggal >= ", $awal);
+        $this->db->where("b.tanggal <= ", $akhir);
         $query =$this->db->get();
         // var_dump($query->result());exit;
         if ($query->num_rows() == 0) {
@@ -92,8 +95,8 @@ class Rekap_pertemuan extends CI_Model {
         $this->db->from('bap as b');
         $this->db->join('users as u', 'u.nip=b.nip_dosen');
         $this->db->where('bap_kode_matkul', $matkul);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') >= ", $awal);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') <= ", $akhir);
+        $this->db->where(" b.tanggal >= ", $awal);
+        $this->db->where("b.tanggal <= ", $akhir);
         $query =$this->db->get();
         // var_dump($query->result());exit;
         if ($query->num_rows() == 0) {
@@ -110,8 +113,8 @@ class Rekap_pertemuan extends CI_Model {
         $this->db->join('users as u', 'u.nip=b.nip_dosen');
         $this->db->where('bap_id_prodi', $prodi);
         $this->db->where('bap_kode_matkul', $matkul);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') >= ", $awal);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') <= ", $akhir);
+        $this->db->where(" b.tanggal >= ", $awal);
+        $this->db->where("b.tanggal <= ", $akhir);
         $query =$this->db->get();
         // var_dump($query->result());exit;
         if ($query->num_rows() == 0) {
@@ -128,8 +131,8 @@ class Rekap_pertemuan extends CI_Model {
         $this->db->from('bap as b');
         $this->db->join('users as u', 'u.nip=b.nip_dosen');
         $this->db->where('kelas', $kelas);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') >= ", $awal);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') <= ", $akhir);
+        $this->db->where(" b.tanggal >= ", $awal);
+        $this->db->where("b.tanggal <= ", $akhir);
         $query =$this->db->get();
         // var_dump($query->result());exit;
         if ($query->num_rows() == 0) {
@@ -146,8 +149,8 @@ class Rekap_pertemuan extends CI_Model {
         $this->db->join('users as u', 'u.nip=b.nip_dosen');
         $this->db->where('bap_id_prodi', $prodi);
         $this->db->where('kelas', $kelas);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') >= ", $awal);
-        $this->db->where("to_char(tanggal,'dd-mm-yyyy') <= ", $akhir);
+        $this->db->where(" b.tanggal >= ", $awal);
+        $this->db->where("b.tanggal <= ", $akhir);
         $query =$this->db->get();
         // var_dump($query->result());exit;
         if ($query->num_rows() == 0) {

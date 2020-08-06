@@ -65,7 +65,7 @@
             "bInfo": false,
             "bFilter": true,
             "bLengthChange": false,
-            "pageLength": 5,
+            "pageLength": 7,
             "order": [
                 [0, 'asc']
             ],

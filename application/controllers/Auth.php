@@ -27,12 +27,13 @@ class Auth extends CI_Controller
 
                 $username = $this->input->post('username', true);
                 $pass = $this->input->post('password', true);
-                $password = sha1($username.$pass);
-
+                $password = sha1($pass);
+                // var_dump($password);exit;
                 $checking = $this->users->check_login($username, $password);
+                // var_dump($checking);exit;
                 if ($checking == false) {
                     $data['error'] = '<div class="alert alert-danger" style="margin-top: 3px">
-                    <div class="header"><b><i class="fa fa-exclamation-circle"></i> ERROR</b> username atau password salah!</div></div>';
+                    <div class="header"><b><i class="fa fa-exclamation-circle"></i> ERROR</b> NIP atau password salah!</div></div>';
                     $this->load->view("main/auth/login", $data);
                 } else {
                     foreach ($checking as $check) {

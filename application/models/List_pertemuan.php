@@ -33,7 +33,7 @@ class List_pertemuan extends CI_Model
 
     public function get_list_pertemuan($id_mkdosen){
         $this->db->select('id_bap, matakuliah, kelas, topik, cp_pertemuan, deskripsi,  status, nip_dosen, bap_id_mkdosen, pertemuan');
-        $this->db->select("to_char(tanggal,'DD/MM/YYYY') AS tanggal", FALSE);
+        $this->db->select("to_char(tanggal,'dd/mm/yyyy') AS tanggal", FALSE);
         $this->db->from('bap');
         $this->db->where('bap_id_mkdosen', $id_mkdosen);
         $query =$this->db->get();
@@ -66,7 +66,7 @@ class List_pertemuan extends CI_Model
 
     }
     public function get_cp_pertemuan ($id) {
-        $this->db->select('cp_pertemuan');
+        $this->db->select('*');
         $this->db->from('topik');
         $this->db->where('kode_tpk', $id);
         $query = $this->db->get();
@@ -132,6 +132,7 @@ class List_pertemuan extends CI_Model
         $id = $this->input->post('id-bap');
         $tp = $this->input->post('topik-utama');
         $topik = $this->get_topik($tp);
+        // var_dump($tp, $topik);exit;
         $cp = $this->input->post('cp-edit');
         $deskripsi = $this->input->post('deskripsi');
         $tanggal = $this->input->post('tanggal');
